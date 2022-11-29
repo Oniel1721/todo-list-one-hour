@@ -1,11 +1,16 @@
-import { useTodos } from "../hooks/useTodos"
+import { useTodos, useTodosFiltered } from "../hooks"
 import { TodoContext } from "./TodoContext"
 
 export const TodoProvider = ({ children }: any) => {
-    const todoHook = useTodos()
+
+    const todoService = useTodos()
+    const todosFiltered = useTodosFiltered(todoService.todos)
 
     return <TodoContext.Provider
-        value={todoHook}
+        value={{
+            ...todoService,
+            ...todosFiltered
+        }}
     >
         {children}
     </TodoContext.Provider>

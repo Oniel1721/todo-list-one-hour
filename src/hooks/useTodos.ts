@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { todoLocalStorageService } from '../services'
 import type { Todo, TodoService, TodoComment } from '../context'
 
@@ -24,6 +24,10 @@ export const useTodos = (): TodoService => {
 
     const addCommentOnTodo = useCallback((id: string, comment: TodoComment) => {
         todoLocalStorageService.addCommentOnTodo(id, comment) && updateState()
+    }, [])
+
+    useEffect(() => {
+        updateState()
     }, [])
 
     return {

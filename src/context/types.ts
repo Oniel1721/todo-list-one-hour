@@ -27,5 +27,8 @@ export interface TodoService {
 }
 
 export type TodoContextState = TodoService & {
-
+    search: string;
+    setSearch: (value: string) => void;
+    workspace: TodoWorkspace;
+    setWorkspace: (value: TodoWorkspace) => void;
 }
