@@ -1,20 +1,25 @@
-import { Todo, useTodos } from "../hooks/useTodos"
+import { useCallback, useContext } from "react"
+import { TodoContext, TodoId, TodoStates, TodoWorkspace, Todo } from "../context"
 
-interface Props {
-    addTodo: (todo: Todo) => void
-}
+export const AddForm = () => {
 
-export const AddForm = ({ addTodo }: Props) => {
+    const { addTodo } = useContext(TodoContext)
 
-    const onSumbit = (e: any) => {
-        e.preventDefault()
-        const formData = new FormData(e.target)
+    const getTodoFromForm = useCallback((form: HTMLFormElement): Todo => {
+        const formData = new FormData(form)
         const title = formData.get('title') as string
-        const workspace = formData.get('workspace') as string
+        const workspace = formData.get('workspace') as TodoWorkspace
         const canDelete = !!formData.get('canDelete')
-        const id = Date.now().toString()
-        addTodo({ id, title, workspace, canDelete, state: 'todo', comments: [] })
-    }
+        const id = Date.now().toString() as TodoId
+        return { title, workspace, canDelete, id, comments: [], state: TodoStates.Todo }
+    }, [])
+
+    const onSumbit = useCallback((e: any) => {
+        e.preventDefault()
+        const todo = getTodoFromForm(e.target)
+        addTodo(todo)
+    }, [])
+
 
     return <form onSubmit={onSumbit}>
         <h3 >Crea un todo</h3>
