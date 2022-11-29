@@ -1,19 +1,15 @@
 
-import { AddForm, SearchInput, TodoList } from './components'
+import { AddForm, SearchInput, TodoList, Workspaces } from './components'
 import './App.css'
 
 function App() {
   return (
-    <div className="App">
+    <main>
       <AddForm />
       <SearchInput />
       <TodoList />
-      {/* <ul>
-        {
-          todoHook.workspaces.map((name) => <li key={name} onClick={() => setWorkspace(name)}>{name}</li>)
-        }
-      </ul> */}
-    </div>
+      <Workspaces />
+    </main>
   )
 }
 

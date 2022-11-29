@@ -31,4 +31,5 @@ export type TodoContextState = TodoService & {
     setSearch: (value: string) => void;
     workspace: TodoWorkspace;
     setWorkspace: (value: TodoWorkspace) => void;
+    workspaces: TodoWorkspace[];
 }
