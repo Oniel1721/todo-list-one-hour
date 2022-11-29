@@ -1,5 +1,5 @@
 import { useCallback, useContext } from "react"
-import { TodoContext, TodoId, TodoStates, TodoWorkspace, Todo } from "../context"
+import { TodoContext, TodoId, TodoWorkspace, Todo } from "../context"
 
 export const AddForm = () => {
 
@@ -11,7 +11,7 @@ export const AddForm = () => {
         const workspace = formData.get('workspace') as TodoWorkspace
         const canDelete = !!formData.get('canDelete')
         const id = Date.now().toString() as TodoId
-        return { title, workspace, canDelete, id, comments: [], state: TodoStates.Todo }
+        return { title, workspace, canDelete, id, comments: [], done: false }
     }, [])
 
     const onSumbit = useCallback((e: any) => {

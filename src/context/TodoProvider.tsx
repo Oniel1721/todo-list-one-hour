@@ -1,6 +1,7 @@
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { useTodos, useTodosFiltered } from "../hooks"
 import { TodoContext } from "./TodoContext"
+import { Todo } from "./types"
 
 export const TodoProvider = ({ children }: any) => {
 
@@ -10,11 +11,16 @@ export const TodoProvider = ({ children }: any) => {
         return [...new Set(todoService.todos.map((todo) => todo.workspace))]
     }, [todoService.todos])
 
+    const toggleDone = useCallback((todo: Todo) => {
+        todoService.editTodo(todo.id, { done: !todo.done })
+    }, [])
+
     return <TodoContext.Provider
         value={{
             ...todoService,
             ...todosFiltered,
-            workspaces
+            workspaces,
+            toggleDone
         }}
     >
         {children}

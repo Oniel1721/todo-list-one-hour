@@ -1,0 +1,209 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+:root {
+    --main-bg: #001925;
+    --second-bg: #042b3e;
+    --third-bg: #03a9f4;
+    --main-color: white;
+    --disable-color: #154e6b;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-bg);
+    color: var(--main-color);
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    background-color: var(--second-bg);
+}
+
+.search-bar {
+    position: relative;
+    width: 36rem;
+    height: 6rem;
+    margin-left: auto;
+    margin-right: 2rem;
+    background-color: var(--third-bg);
+    border-radius: 6rem;
+    transition: 0.5s;
+}
+
+.search-input-container {
+    position: relative;
+    width: 30rem;
+    height: 6rem;
+    right: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--main-color);
+    padding: 1rem 0;
+    background-color: transparent;
+}
+
+.search-input::placeholder {
+    color: var(--disable-color);
+}
+
+.search-bar-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.search-bar-icon::before {
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: .3rem solid var(--main-color);
+    border-radius: 50%;
+    transform: translate(-.4rem, -.4rem);
+
+}
+
+.search-bar-icon::after {
+    content: '';
+    position: absolute;
+    width: .3rem;
+    height: 1.2rem;
+    background-color: var(--main-color);
+    transform: translate(.6rem, .6rem) rotate(315deg);
+}
+
+.todos-container {
+    min-width: 350px;
+    margin: auto;
+    padding: 3rem 7.5rem 1rem 3rem;
+    position: relative;
+    background-color: var(--second-bg);
+    border-top: 5rem solid var(--third-bg);
+}
+
+.todos-title {
+    font-size: 3rem;
+    padding: 1rem 0;
+    margin-left: 1rem;
+    display: inline-block;
+    border-bottom: 4px solid var(--main-color);
+}
+
+.todos-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.todo-card {
+    position: relative;
+    margin: 4rem 0;
+}
+
+.todo-card label {
+    font-size: 2.4rem;
+    cursor: pointer;
+    display: block;
+}
+
+.todo-card label .todo-card-check {
+    appearance: none;
+    display: inline-block;
+}
+
+.todo-card label i {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.2rem solid var(--main-color);
+}
+
+.todo-card label .todo-card-check:checked~i {
+    top: 1px;
+    border-top: none;
+    border-right: none;
+    height: 1.5rem;
+    width: 2.5rem;
+    transform: rotate(-45deg);
+}
+
+.todo-card label .todo-card-title {
+    position: relative;
+    left: 4rem;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.todo-card label .todo-card-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.todo-card label .todo-card-check:checked~.todo-card-title::before {
+    transform: translateY(-50%) scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.todo-card label .todo-card-check:checked~.todo-card-title {
+    color: var(--disable-color);
+}
