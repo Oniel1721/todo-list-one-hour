@@ -120,9 +120,35 @@ main {
     transform: translate(.6rem, .6rem) rotate(315deg);
 }
 
+.workspaces-container {
+    width: 100%;
+    /* background-color: #154e6b; */
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+}
+
+.workspaces-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.workspace-select {
+    width: 36rem;
+    font-size: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-radius: 6rem;
+    background-color: var(--third-bg);
+    color: var(--main-color);
+}
+
 .todos-container {
     min-width: 350px;
-    margin: auto;
+    margin: 2rem auto;
     padding: 3rem 7.5rem 1rem 3rem;
     position: relative;
     background-color: var(--second-bg);
