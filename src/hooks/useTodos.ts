@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export interface Todo {
+    id: string;
     title: string;
     workspace: string;
     canDelete: boolean;
@@ -26,8 +27,8 @@ export const useTodos = ({ search, workspaceSelected }: Props) => {
         return JSON.parse(localStorage.getItem('todos') ?? '[]') as Todo[]
     }
 
-    const deleteTodo = (index: number) => {
-        const newTodos = todos.filter((_, i) => index !== i)
+    const deleteTodo = (id: string) => {
+        const newTodos = todos.filter((todo) => id !== todo.id)
         localStorage.setItem('todos', JSON.stringify(newTodos))
         updateState()
     }

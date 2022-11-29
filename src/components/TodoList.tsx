@@ -3,7 +3,7 @@ import { Todo } from "./Todo"
 
 interface Props {
     todos: TodoType[],
-    deleteTodo: (i: number) => void,
+    deleteTodo: (i: string) => void,
     addComment: (comment: string, i: number) => void
 }
 

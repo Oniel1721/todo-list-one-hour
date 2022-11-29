@@ -9,10 +9,11 @@ export const AddForm = ({ addTodo }: Props) => {
     const onSumbit = (e: any) => {
         e.preventDefault()
         const formData = new FormData(e.target)
-        const title = formData.get('title')!
-        const workspace = formData.get('workspace')
+        const title = formData.get('title') as string
+        const workspace = formData.get('workspace') as string
         const canDelete = !!formData.get('canDelete')
-        addTodo({ title, workspace, canDelete, state: 'todo', comments: [] } as any)
+        const id = Date.now().toString()
+        addTodo({ id, title, workspace, canDelete, state: 'todo', comments: [] })
     }
 
     return <form onSubmit={onSumbit}>
