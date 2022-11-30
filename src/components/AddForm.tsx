@@ -4,7 +4,7 @@ import { FormInput } from "./FormInput"
 
 export const AddForm = () => {
 
-    const { addTodo } = useContext(TodoContext)
+    const { addTodo, workspaces } = useContext(TodoContext)
     const [isFormActive, setIsFormActive] = useState(false)
 
     const getTodoFromForm = useCallback((form: HTMLFormElement): Todo => {
@@ -43,10 +43,16 @@ export const AddForm = () => {
                 type="text"
             />
             <FormInput
+                list="workspaces-availables"
                 label="Espacio de trabajo"
                 name="workspace"
                 type="text"
             />
+            <datalist id="workspaces-availables">
+                {workspaces.map((name) => (
+                    <option key={name} value={name} />
+                ))}
+            </datalist>
             <div className="input-box can-delete-box">
                 <input id="canDelete" name="canDelete" type="checkbox" />
                 <i />

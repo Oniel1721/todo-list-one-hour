@@ -11,9 +11,11 @@ export const TodoList = () => {
         }</h2>
         <ul className="todos-list">
             {
-                todos.map((todo, i) => {
-                    return <TodoCard todo={todo} key={i} />
-                })
+                todos.length
+                    ? todos.map((todo, i) => {
+                        return <TodoCard todo={todo} key={i} />
+                    })
+                    : <h3 className="no-todos">No hay tareas</h3>
             }
         </ul>
     </section>
