@@ -178,6 +178,7 @@ main {
     font-size: 3rem;
     padding: 1rem 0;
     margin-left: 1rem;
+    margin-right: 2rem;
     display: inline-block;
     border-bottom: 4px solid var(--main-color);
 }
@@ -193,6 +194,12 @@ main {
     width: 100%;
     max-height: 400px;
     overflow: auto;
+}
+
+.no-todos {
+    width: 100%;
+    font-size: 1.8rem;
+    margin-top: 2rem;
 }
 
 .todo-card {
