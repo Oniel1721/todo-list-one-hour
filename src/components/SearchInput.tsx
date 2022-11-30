@@ -5,6 +5,7 @@ export const SearchInput = () => {
     const { setSearch, search } = useContext(TodoContext)
 
     return <header className="header">
+        <h1>To-do List</h1>
         <section className="search-bar">
             <div className="search-input-container">
                 <input

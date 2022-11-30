@@ -64,6 +64,11 @@ main {
     background-color: var(--second-bg);
 }
 
+h1 {
+    font-size: 3.6rem;
+    margin-left: 3rem;
+}
+
 .search-bar {
     position: relative;
     width: 36rem;
@@ -139,7 +144,7 @@ main {
 .workspaces-container {
     width: 100%;
     /* background-color: #154e6b; */
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
     /* align-items: flex-end; */
