@@ -26,6 +26,22 @@ body {
     color: var(--main-color);
 }
 
+::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--disable-color);
+    border-radius: 5rem;
+}
+
+:hover::-webkit-scrollbar-thumb {
+    background: var(--third-bg);
+    border-radius: 5rem;
+}
+
+
+
 #root {
     width: 100%;
     height: 100%;
@@ -149,7 +165,8 @@ main {
 .todos-container {
     min-width: 350px;
     margin: 2rem auto;
-    padding: 3rem 7.5rem 1rem 3rem;
+    padding: 3rem 0.5rem;
+    padding-left: 2rem;
     position: relative;
     background-color: var(--second-bg);
     border-top: 5rem solid var(--third-bg);
@@ -168,10 +185,13 @@ main {
     list-style: none;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-right: 5rem;
+    padding-left: 1rem;
     width: 100%;
-    max-height: 70vh;
-    overflow-y: auto;
-    /* background-color: green; */
+    max-height: 50vh;
+    overflow: auto;
 }
 
 .todo-card {
@@ -291,4 +311,210 @@ main {
     cursor: pointer;
     color: var(--main-color);
     font-weight: bold;
+}
+
+.modal-bg {
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    scale: 0;
+    transition: scale 0.5s;
+}
+
+.add-form {
+    position: absolute;
+    background-color: var(--second-bg);
+    border: 0.1rem solid var(--third-bg);
+    border-radius: 2rem;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 20%;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    gap: 2.5rem;
+    width: 80vw;
+    max-width: 500px;
+    scale: 0;
+    transition: scale 0.5s;
+    z-index: 15;
+}
+
+.add-form.active,
+.modal-bg.active {
+    scale: 1;
+}
+
+.add-title {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.input-box {
+    position: relative;
+    width: 90%;
+    margin: auto;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--disable-color);
+    background-color: var(--second-bg);
+    border-radius: 0.5rem;
+    outline: none;
+    color: var(--main-color);
+    font-size: 1em;
+    transition: 0.5s;
+}
+
+.input-label {
+    position: absolute;
+    left: 0;
+    padding: 1rem;
+    pointer-events: none;
+    font-size: 1em;
+    color: var(--disable-color);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.input:valid~.input-label,
+.input:focus~.input-label {
+    color: var(--third-bg);
+    transform: translate(1rem, -1.3rem);
+    font-size: 0.65em;
+    padding: 0.2rem 1rem;
+    background-color: var(--third-bg);
+    color: var(--main-color);
+    border-radius: 0.3rem;
+    /* border-left: 1px solid var(--third-bg);
+    border-right: 1px solid var(--third-bg); */
+    letter-spacing: 0.2em;
+}
+
+.input:valid,
+.input:focus {
+    border-color: var(--third-bg);
+}
+
+.add-todo-btn {
+    background-color: var(--third-bg);
+    color: var(--main-color);
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 90%;
+    margin: auto;
+}
+
+.can-delete-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.can-delete-box input {
+    appearance: none;
+    display: inline-block;
+}
+
+.can-delete-box i {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0.2rem solid var(--main-color);
+}
+
+.can-delete-box label {
+    position: relative;
+    left: 4rem;
+    display: inline-block;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.can-delete-box input:checked~i {
+    top: 1px;
+    border-top: none;
+    border-right: none;
+    height: 1.5rem;
+    width: 2.5rem;
+    transform: rotate(-45deg);
+}
+
+.can-delete-box label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.can-delete-box input:checked~label::before {
+    transform: translateY(-50%) scaleX(1);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.can-delete-box input:checked~label {
+    color: var(--disable-color);
+}
+
+
+.active-form-btn {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background-color: var(--third-bg);
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    border: none;
+    transition: rotate 0.5s;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.active-form-btn.active {
+    rotate: 135deg;
+}
+
+.active-form-btn::before {
+    content: "";
+    position: absolute;
+    width: 0.5rem;
+    height: 75%;
+    background-color: var(--main-color);
+    top: 12.5%;
+    left: 50%;
+    translate: -50%;
+}
+
+.active-form-btn::after {
+    content: "";
+    position: absolute;
+    width: 75%;
+    height: 0.5rem;
+    background-color: var(--main-color);
+    top: 50%;
+    left: 12.5%;
+    translate: 0 -50%;
 }

@@ -22,6 +22,7 @@ export const TodoCard = ({ todo }: Props) => {
         </label>
         <div className="add-comment">
             <input
+                required
                 placeholder="Comment"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -35,8 +36,14 @@ export const TodoCard = ({ todo }: Props) => {
             </button>
         </div>
         <footer className="comments">
-            {todo.comments.map((comment) => <p className="comment">{comment}</p>)}
+            {todo.comments.map((comment) =>
+                (<p className="comment">{comment}</p>)
+            )}
         </footer>
-        {todo.canDelete && <button className="delete-comment-btn" onClick={() => deleteTodo(todo.id)}>Eliminar</button>}
+        {todo.canDelete &&
+            <button
+                className="delete-comment-btn"
+                onClick={() => deleteTodo(todo.id)}>Eliminar</button>
+        }
     </li >
 }

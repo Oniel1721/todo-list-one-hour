@@ -23,6 +23,7 @@ export const useTodos = (): TodoService => {
     }, [])
 
     const addCommentOnTodo = useCallback((id: string, comment: TodoComment) => {
+        if (!comment) return;
         todoLocalStorageService.addCommentOnTodo(id, comment) && updateState()
     }, [])
 
