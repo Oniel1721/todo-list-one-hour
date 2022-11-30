@@ -6,6 +6,7 @@ export const AddForm = () => {
 
     const { addTodo, workspaces } = useContext(TodoContext)
     const [isFormActive, setIsFormActive] = useState(false)
+    const [isCanDeleteChecked, setIsCanDeleteChecked] = useState(false)
 
     const getTodoFromForm = useCallback((form: HTMLFormElement): Todo => {
         const formData = new FormData(form)
@@ -14,6 +15,10 @@ export const AddForm = () => {
         const canDelete = !!formData.get('canDelete')
         const id = Date.now().toString() as TodoId
         return { title, workspace, canDelete, id, comments: [], done: false }
+    }, [])
+
+    const toggleCanDeleteChecked = useCallback(() => {
+        setIsCanDeleteChecked((prev) => !prev)
     }, [])
 
     const toggleFormActive = useCallback(() => {
@@ -53,8 +58,8 @@ export const AddForm = () => {
                     <option key={name} value={name} />
                 ))}
             </datalist>
-            <div className="input-box can-delete-box">
-                <input id="canDelete" name="canDelete" type="checkbox" />
+            <div onClick={toggleCanDeleteChecked} className="input-box can-delete-box">
+                <input checked={isCanDeleteChecked} id="canDelete" name="canDelete" type="checkbox" />
                 <i />
                 <label htmlFor="canDelete">Se podrá eliminar?</label>
             </div>
