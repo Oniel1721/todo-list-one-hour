@@ -1,9 +1,3 @@
-export enum TodoStates {
-    Todo = 'todo',
-    Doing = 'doing',
-    Done = 'done'
-}
-
 export type TodoId = string;
 export type TodoComment = string;
 export type TodoWorkspace = string;
@@ -14,7 +8,7 @@ export interface Todo {
     title: string;
     workspace: TodoWorkspace;
     canDelete: boolean;
-    state: TodoStates;
+    done: boolean;
     comments: TodoComment[]
 }
 
@@ -32,4 +26,5 @@ export type TodoContextState = TodoService & {
     workspace: TodoWorkspace;
     setWorkspace: (value: TodoWorkspace) => void;
     workspaces: TodoWorkspace[];
+    toggleDone: (todo: Todo) => void
 }
