@@ -143,11 +143,9 @@ h1 {
 
 .workspaces-container {
     width: 100%;
-    /* background-color: #154e6b; */
     padding: 1rem 3rem;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-end; */
 }
 
 .workspaces-title {
@@ -301,7 +299,6 @@ h1 {
 }
 
 .comments {
-    /* background-color: red; */
     padding-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -312,7 +309,6 @@ h1 {
 .comment {
     font-size: 1.4rem;
     padding-top: 1rem;
-    /* background-color: #03a9f4; */
     border-bottom: 1px solid var(--main-color);
 }
 
@@ -408,8 +404,6 @@ h1 {
     background-color: var(--third-bg);
     color: var(--main-color);
     border-radius: 0.3rem;
-    /* border-left: 1px solid var(--third-bg);
-    border-right: 1px solid var(--third-bg); */
     letter-spacing: 0.2em;
 }
 
